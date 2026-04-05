@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="nl" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hilton by Shakir Luxury Apartments – Tanger</title>
+  <meta name="description" content="Welcome guide for Hilton by Shakir Luxury Apartments in Tangier. House rules, emergency numbers, and check-in information.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #0a0a0a;
+      --bg-card: #141414;
+      --bg-card-hover: #1a1a1a;
+      --gold: #b8a07a;
+      --gold-dim: #8a7758;
+      --gold-bright: #d4bc94;
+      --text: #e8e2d8;
+      --text-muted: #9a9489;
+      --text-heading: #f0ebe3;
+      --border: #2a2620;
+      --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --radius: 12px;
+      --space-xs: 8px;
+      --space-sm: 12px;
+      --space-md: 20px;
+      --space-lg: 32px;
+      --space-xl: 48px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--sans);
+      font-weight: 300;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* --- Language visibility --- */
+    [data-lang] { display: none; }
+    html[data-active-lang="nl"] [data-lang="nl"],
+    html[data-active-lang="en"] [data-lang="en"],
+    html[data-active-lang="fr"] [data-lang="fr"],
+    html[data-active-lang="ar"] [data-lang="ar"] {
+      display: block;
+    }
+
+    /* --- Page shell --- */
+    .page {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: var(--space-md) var(--space-md) var(--space-xl);
+    }
+
+    /* --- Header & logo --- */
+    .header {
+      text-align: center;
+      padding: var(--space-lg) 0 var(--space-md);
+    }
+
+    .logo {
+      width: 200px;
+      height: auto;
+      margin-bottom: var(--space-md);
+      filter: brightness(1.1);
+    }
+
+    .brand-line {
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: var(--space-sm) auto;
+      opacity: 0.6;
+    }
+
+    /* --- Language switcher --- */
+    .lang-switcher {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: var(--space-lg);
+    }
+
+    .lang-btn {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      font-size: 14px;
+      padding: 8px 14px;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: var(--sans);
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+
+    .lang-btn:hover {
+      border-color: var(--gold-dim);
+      color: var(--text);
+    }
+
+    .lang-btn.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--bg);
+      font-weight: 500;
+    }
+
+    .lang-btn .flag {
+      margin-inline-end: 4px;
+      font-size: 15px;
+    }
+
+    /* --- Welcome section --- */
+    .welcome {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .welcome h1 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(22px, 6vw, 28px);
+      color: var(--text-heading);
+      line-height: 1.25;
+      margin-bottom: var(--space-sm);
+    }
+
+    .welcome h1 span {
+      display: block;
+      font-size: 0.55em;
+      font-family: var(--sans);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .welcome p {
+      color: var(--text-muted);
+      font-size: 14px;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    /* --- Cards --- */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--space-md) var(--space-md) var(--space-md);
+      margin-bottom: var(--space-md);
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      inset-inline-start: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      border-radius: var(--radius) 0 0 var(--radius);
+    }
+
+    [dir="rtl"] .card::before {
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .card-icon {
+      font-size: 20px;
+      margin-bottom: var(--space-xs);
+      display: block;
+    }
+
+    .card h2 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: 20px;
+      color: var(--gold-bright);
+      margin-bottom: var(--space-sm);
+      line-height: 1.2;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card ul li {
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 14px;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .card ul li:last-child {
+      border-bottom: none;
+    }
+
+    .card ul li .emoji {
+      flex-shrink: 0;
+      font-size: 16px;
+      width: 22px;
+      text-align: center;
+    }
+
+    /* --- Emergency numbers --- */
+    .emergency-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .emergency-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      padding: 12px 14px;
+      background: rgba(184, 160, 122, 0.06);
+      border: 1px solid rgba(184, 160, 122, 0.15);
+      border-radius: 10px;
+      transition: all 0.2s ease;
+      font-size: 14px;
+    }
+
+    .emergency-item:active {
+      background: rgba(184, 160, 122, 0.14);
+      transform: scale(0.98);
+    }
+
+    .emergency-item .em-icon {
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .emergency-item .em-details {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .emergency-item .em-label {
+      display: block;
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+
+    .emergency-item .em-number {
+      font-weight: 500;
+      color: var(--gold-bright);
+      letter-spacing: 0.02em;
+    }
+
+    .emergency-item .em-arrow {
+      color: var(--gold-dim);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    /* --- Check-in times highlight --- */
+    .time-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: var(--space-sm);
+    }
+
+    .time-block {
+      text-align: center;
+      padding: 14px 10px;
+      background: rgba(184, 160, 122, 0.06);
+      border: 1px solid rgba(184, 160, 122, 0.12);
+      border-radius: 10px;
+    }
+
+    .time-block .time-label {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .time-block .time-value {
+      font-family: var(--serif);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--gold-bright);
+    }
+
+    .card .note {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .card .note + .note {
+      margin-top: 4px;
+    }
+
+    /* --- Extra / footer --- */
+    .extra-text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .footer {
+      text-align: center;
+      padding-top: var(--space-lg);
+      margin-top: var(--space-md);
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: 16px;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    /* --- Animations --- */
+    @media (prefers-reduced-motion: no-preference) {
+      .card {
+        animation: fadeUp 0.5s ease both;
+      }
+      .card:nth-child(1) { animation-delay: 0.05s; }
+      .card:nth-child(2) { animation-delay: 0.1s; }
+      .card:nth-child(3) { animation-delay: 0.15s; }
+      .card:nth-child(4) { animation-delay: 0.2s; }
+      .card:nth-child(5) { animation-delay: 0.25s; }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* --- Utilities --- */
+    @media (min-width: 520px) {
+      .page { padding-inline: var(--space-lg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Header -->
+    <header class="header">
+      <img src="image.png" alt="By Shakir Luxury Interiors" class="logo">
+      <span class="brand-line"></span>
+    </header>
+
+    <!-- Language Switcher -->
+    <nav class="lang-switcher" role="tablist" aria-label="Language">
+      <button class="lang-btn active" role="tab" aria-selected="true" data-switch-lang="nl">
+        <span class="flag">🇳🇱</span>NL
+      </button>
+      <button class="lang-btn" role="tab" aria-selected="false" data-switch-lang="en">
+        <span class="flag">🇬🇧</span>EN
+      </button>
+      <button class="lang-btn" role="tab" aria-selected="false" data-switch-lang="fr">
+        <span class="flag">🇫🇷</span>FR
+      </button>
+      <button class="lang-btn" role="tab" aria-selected="false" data-switch-lang="ar">
+        <span class="flag">🇸🇦</span>AR
+      </button>
+    </nav>
+
+    <!-- ==================== DUTCH ==================== -->
+    <main data-lang="nl">
+      <section class="welcome">
+        <h1>
+          <span>By Shakir Luxury Apartments</span>
+          Welkom in Tanger
+        </h1>
+        <p>Wij heten u van harte welkom in ons appartement. Wij streven ernaar uw verblijf zo comfortabel mogelijk te maken met onze 24/7 service en beveiliging.</p>
+      </section>
+
+      <div class="card">
+        <span class="card-icon">📜</span>
+        <h2>Huisregels</h2>
+        <ul>
+          <li><span class="emoji">🚭</span><span>Niet roken</span></li>
+          <li><span class="emoji">🎉</span><span>Geen feesten</span></li>
+          <li><span class="emoji">🚫</span><span>Geen prostitutie toegestaan</span></li>
+          <li><span class="emoji">👟</span><span>Geen schoenen op het tapijt</span></li>
+          <li><span class="emoji">🐾</span><span>Geen huisdieren</span></li>
+          <li><span class="emoji">🤫</span><span>Respecteer de buren</span></li>
+          <li><span class="emoji">🍽️</span><span>Doe de afwas</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🆘</span>
+        <h2>Noodnummers</h2>
+        <div class="emergency-list">
+          <a href="tel:+31618658059" class="emergency-item">
+            <span class="em-icon">📞</span>
+            <span class="em-details">
+              <span class="em-label">Host Shakir</span>
+              <span class="em-number">+31 6 18658059</span>
+            </span>
+            <span class="em-arrow">›</span>
+          </a>
+          <a href="tel:+212642752876" class="emergency-item">
+            <span class="em-icon">📞</span>
+            <span class="em-details">
+              <span class="em-label">Youssef</span>
+              <span class="em-number">+212 642 752 876</span>
+            </span>
+            <span class="em-arrow">›</span>
+          </a>
+          <a href="tel:190" class="emergency-item">
+            <span class="em-icon">🚓</span>
+            <span class="em-details">
+              <span class="em-label">Politie</span>
+              <span class="em-number">190</span>
+            </span>
+            <span class="em-arrow">›</span>
+          </a>
+          <a href="tel:150" class="emergency-item">
+            <span class="em-icon">🏥</span>
+            <span class="em-details">
+              <span class="em-label">Ziekenhuis</span>
+              <span class="em-number">150</span>
+            </span>
+            <span class="em-arrow">›</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🅿️</span>
+        <h2>Parkeren &amp; Afval</h2>
+        <ul>
+          <li><span class="emoji">🚗</span><span>Gratis parkeren in de straat.</span></li>
+          <li><span class="emoji">🗑️</span><span>Afval kan worden weggegooid bij niveau -2 (min-2).</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🕐</span>
+        <h2>Check-in / Check-out</h2>
+        <div class="time-grid">
+          <div class="time-block">
+            <span class="time-label">Check-in</span>
+            <span class="time-value">15:00</span>
+          </div>
+          <div class="time-block">
+            <span class="time-label">Check-out</span>
+            <span class="time-value">12:00</span>
+          </div>
+        </div>
+        <p class="note">Laat het appartement achter zoals u het aantrof.</p>
+        <p class="note">Was uw gebruikte vaat voor vertrek.</p>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">✨</span>
+        <h2>Extra</h2>
+        <p class="extra-text">Hilton by Shakir biedt ook interieurontwerp &amp; styling aan.<br>Binnenkort meer appartementen in Tanger op onze website.</p>
+      </div>
+    </main>
+
+    <!-- ==================== ENGLISH ==================== -->
+    <main data-lang="en">
+      <section class="welcome">
+        <h1>
+          <span>By Shakir Luxury Apartments</span>
+          Welcome to Tangier
+        </h1>
+        <p>We warmly welcome you to our apartment. We aim to make your stay as comfortable as possible with our 24/7 service and security.</p>
+      </section>
+
+      <div class="card">
+        <span class="card-icon">📜</span>
+        <h2>House Rules</h2>
+        <ul>
+          <li><span class="emoji">🚭</span><span>No smoking</span></li>
+          <li><span class="emoji">🎉</span><span>No parties</span></li>
+          <li><span class="emoji">🚫</span><span>No prostitution allowed</span></li>
+          <li><span class="emoji">👟</span><span>No shoes on the carpet</span></li>
+          <li><span class="emoji">🐾</span><span>No pets</span></li>
+          <li><span class="emoji">🤫</span><span>Respect the neighbors</span></li>
+          <li><span class="emoji">🍽️</span><span>Do the dishes</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🆘</span>
+        <h2>Emergency Numbers</h2>
+        <div class="emergency-list">
+          <a href="tel:+31618658059" class="emergency-item">
+            <span class="em-icon">📞</span>
+            <span class="em-details">
+              <span class="em-label">Host Shakir</span>
+              <span class="em-number">+31 6 18658059</span>
+            </span>
+            <span class="em-arrow">›</span>
+          </a>
+          <a href="tel:+212642752876" class="emergency-item">
+            <span class="em-icon">📞</span>
+            <span class="em-details">
+              <span class="em-label">Youssef</span>
+              <span class="em-number">+212 642 752 876</span>
+            </span>
+            <span class="em-arrow">›</span>
+          </a>
+          <a href="tel:190" class="emergency-item">
+            <span class="em-icon">🚓</span>
+            <span class="em-details">
+              <span class="em-label">Police</span>
+              <span class="em-number">190</span>
+            </span>
+            <span class="em-arrow">›</span>
+          </a>
+          <a href="tel:150" class="emergency-item">
+            <span class="em-icon">🏥</span>
+            <span class="em-details">
+              <span class="em-label">Hospital</span>
+              <span class="em-number">150</span>
+            </span>
+            <span class="em-arrow">›</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🅿️</span>
+        <h2>Parking &amp; Waste</h2>
+        <ul>
+          <li><span class="emoji">🚗</span><span>Free street parking.</span></li>
+          <li><span class="emoji">🗑️</span><span>Waste can be disposed of at level -2 (minus 2).</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🕐</span>
+        <h2>Check-in / Check-out</h2>
+        <div class="time-grid">
+          <div class="time-block">
+            <span class="time-label">Check-in</span>
+            <span class="time-value">15:00</span>
+          </div>
+          <div class="time-block">
+            <span class="time-label">Check-out</span>
+            <span class="time-value">12:00</span>
+          </div>
+        </div>
+        <p class="note">Leave the apartment as you found it.</p>
+        <p class="note">Wash any used dishes before departure.</p>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">✨</span>
+        <h2>Extra</h2>
+        <p class="extra-text">Hilton by Shakir also offers interior design &amp; styling.<br>More apartments in Tangier coming soon on our website.</p>
+      </div>
+    </main>
+
+    <!-- ==================== FRENCH ==================== -->
+    <main data-lang="fr">
+      <section class="welcome">
+        <h1>
+          <span>By Shakir Luxury Apartments</span>
+          Bienvenue à Tanger
+        </h1>
+        <p>Nous vous souhaitons la bienvenue dans notre appartement. Nous nous efforçons de rendre votre séjour aussi confortable que possible grâce à notre service et sécurité 24h/24 et 7j/7.</p>
+      </section>
+
+      <div class="card">
+        <span class="card-icon">📜</span>
+        <h2>Règles de la Maison</h2>
+        <ul>
+          <li><span class="emoji">🚭</span><span>Interdiction de fumer</span></li>
+          <li><span class="emoji">🎉</span><span>Pas de fêtes</span></li>
+          <li><span class="emoji">🚫</span><span>La prostitution est interdite</span></li>
+          <li><span class="emoji">👟</span><span>Pas de chaussures sur la moquette</span></li>
+          <li><span class="emoji">🐾</span><span>Pas d'animaux domestiques</span></li>
+          <li><span class="emoji">🤫</span><span>Respectez le voisinage</span></li>
+          <li><span class="emoji">🍽️</span><span>Faites la vaisselle</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🆘</span>
+        <h2>Numéros d'Urgence</h2>
+        <div class="emergency-list">
+          <a href="tel:+31618658059" class="emergency-item">
+            <span class="em-icon">📞</span>
+            <span class="em-details">
+              <span class="em-label">Hôte Shakir</span>
+              <span class="em-number">+31 6 18658059</span>
+            </span>
+            <span class="em-arrow">›</span>
+          </a>
+          <a href="tel:+212642752876" class="emergency-item">
+            <span class="em-icon">📞</span>
+            <span class="em-details">
+              <span class="em-label">Youssef</span>
+              <span class="em-number">+212 642 752 876</span>
+            </span>
+            <span class="em-arrow">›</span>
+          </a>
+          <a href="tel:190" class="emergency-item">
+            <span class="em-icon">🚓</span>
+            <span class="em-details">
+              <span class="em-label">Police</span>
+              <span class="em-number">190</span>
+            </span>
+            <span class="em-arrow">›</span>
+          </a>
+          <a href="tel:150" class="emergency-item">
+            <span class="em-icon">🏥</span>
+            <span class="em-details">
+              <span class="em-label">Hôpital</span>
+              <span class="em-number">150</span>
+            </span>
+            <span class="em-arrow">›</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🅿️</span>
+        <h2>Stationnement &amp; Déchets</h2>
+        <ul>
+          <li><span class="emoji">🚗</span><span>Stationnement gratuit dans la rue.</span></li>
+          <li><span class="emoji">🗑️</span><span>Les déchets peuvent être jetés au niveau -2 (moins 2).</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🕐</span>
+        <h2>Arrivée / Départ</h2>
+        <div class="time-grid">
+          <div class="time-block">
+            <span class="time-label">Arrivée</span>
+            <span class="time-value">15h00</span>
+          </div>
+          <div class="time-block">
+            <span class="time-label">Départ</span>
+            <span class="time-value">12h00</span>
+          </div>
+        </div>
+        <p class="note">Laissez l'appartement dans l'état où vous l'avez trouvé.</p>
+        <p class="note">Lavez la vaisselle utilisée avant de partir.</p>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">✨</span>
+        <h2>Extra</h2>
+        <p class="extra-text">Hilton by Shakir propose également des services de décoration et d'aménagement intérieur.<br>Bientôt plus d'appartements à Tanger sur notre site internet.</p>
+      </div>
+    </main>
+
+    <!-- ==================== ARABIC ==================== -->
+    <main data-lang="ar">
+      <section class="welcome">
+        <h1>
+          <span>By Shakir Luxury Apartments</span>
+          مرحبًا بكم في طنجة
+        </h1>
+        <p>نرحب بكم بحرارة في شقتنا. نسعى لجعل إقامتكم مريحة قدر الإمكان مع خدمتنا وأمننا على مدار الساعة.</p>
+      </section>
+
+      <div class="card">
+        <span class="card-icon">📜</span>
+        <h2>قوانين المنزل</h2>
+        <ul>
+          <li><span class="emoji">🚭</span><span>ممنوع التدخين</span></li>
+          <li><span class="emoji">🎉</span><span>ممنوع إقامة الحفلات</span></li>
+          <li><span class="emoji">🚫</span><span>ممنوع ممارسة الدعارة</span></li>
+          <li><span class="emoji">👟</span><span>ممنوع ارتداء الأحذية على السجاد</span></li>
+          <li><span class="emoji">🐾</span><span>ممنوع اصطحاب الحيوانات الأليفة</span></li>
+          <li><span class="emoji">🤫</span><span>الرجاء احترام الجيران</span></li>
+          <li><span class="emoji">🍽️</span><span>الرجاء غسل الأواني بعد الاستخدام</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🆘</span>
+        <h2>أرقام الطوارئ</h2>
+        <div class="emergency-list">
+          <a href="tel:+31618658059" class="emergency-item">
+            <span class="em-icon">📞</span>
+            <span class="em-details">
+              <span class="em-label">المضيف شاكر</span>
+              <span class="em-number" dir="ltr">+31 6 18658059</span>
+            </span>
+            <span class="em-arrow">‹</span>
+          </a>
+          <a href="tel:+212642752876" class="emergency-item">
+            <span class="em-icon">📞</span>
+            <span class="em-details">
+              <span class="em-label">يوسف</span>
+              <span class="em-number" dir="ltr">+212 642 752 876</span>
+            </span>
+            <span class="em-arrow">‹</span>
+          </a>
+          <a href="tel:190" class="emergency-item">
+            <span class="em-icon">🚓</span>
+            <span class="em-details">
+              <span class="em-label">الشرطة</span>
+              <span class="em-number" dir="ltr">190</span>
+            </span>
+            <span class="em-arrow">‹</span>
+          </a>
+          <a href="tel:150" class="emergency-item">
+            <span class="em-icon">🏥</span>
+            <span class="em-details">
+              <span class="em-label">المستشفى</span>
+              <span class="em-number" dir="ltr">150</span>
+            </span>
+            <span class="em-arrow">‹</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🅿️</span>
+        <h2>مواقف السيارات والنفايات</h2>
+        <ul>
+          <li><span class="emoji">🚗</span><span>مواقف مجانية في الشارع.</span></li>
+          <li><span class="emoji">🗑️</span><span>يمكن التخلص من النفايات في الطابق -2 (سالب 2).</span></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">🕐</span>
+        <h2>تسجيل الوصول / تسجيل المغادرة</h2>
+        <div class="time-grid">
+          <div class="time-block">
+            <span class="time-label">تسجيل الوصول</span>
+            <span class="time-value">15:00</span>
+          </div>
+          <div class="time-block">
+            <span class="time-label">تسجيل المغادرة</span>
+            <span class="time-value">12:00</span>
+          </div>
+        </div>
+        <p class="note">يرجى ترك الشقة كما وجدتموها.</p>
+        <p class="note">يرجى غسل الأواني قبل المغادرة.</p>
+      </div>
+
+      <div class="card">
+        <span class="card-icon">✨</span>
+        <h2>إضافي</h2>
+        <p class="extra-text">هيلتون باي شاكر يقدم أيضًا خدمات التصميم والديكور الداخلي.<br>قريبًا المزيد من الشقق في طنجة على موقعنا الإلكتروني.</p>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-brand">By Shakir</div>
+      <div class="footer-sub">Luxury Interiors &amp; Apartments</div>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      const html = document.documentElement;
+      const langMap = {
+        nl: { lang: 'nl', dir: 'ltr' },
+        en: { lang: 'en', dir: 'ltr' },
+        fr: { lang: 'fr', dir: 'ltr' },
+        ar: { lang: 'ar', dir: 'rtl' }
+      };
+
+      function switchLang(code) {
+        const cfg = langMap[code];
+        if (!cfg) return;
+
+        html.setAttribute('lang', cfg.lang);
+        html.setAttribute('dir', cfg.dir);
+        html.setAttribute('data-active-lang', code);
+
+        document.querySelectorAll('.lang-btn').forEach(function (btn) {
+          const isActive = btn.getAttribute('data-switch-lang') === code;
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        });
+      }
+
+      // Attach click handlers
+      document.querySelectorAll('.lang-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          switchLang(this.getAttribute('data-switch-lang'));
+        });
+      });
+
+      // Initialize default language
+      switchLang('nl');
+    })();
+  </script>
+</body>
+</html>
