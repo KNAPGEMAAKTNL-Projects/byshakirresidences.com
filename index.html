@@ -372,20 +372,21 @@
 
     .apt-track {
       display: flex;
+      gap: 8px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
-      border-radius: 10px;
-      background: #000;
+      -webkit-overflow-scrolling: touch;
     }
 
     .apt-track::-webkit-scrollbar {
       display: none;
     }
 
+    /* 86% width lets the next photo peek in, signalling "swipe me" */
     .apt-track button {
-      flex: 0 0 100%;
-      scroll-snap-align: center;
+      flex: 0 0 86%;
+      scroll-snap-align: start;
       appearance: none;
       border: 0;
       padding: 0;
@@ -398,6 +399,8 @@
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
+      border-radius: 10px;
+      background: #000;
     }
 
     .apt-meta {
@@ -433,11 +436,13 @@
 
     .lightbox .apt-track {
       height: 100%;
-      border-radius: 0;
+      gap: 0;
     }
 
     .lightbox .apt-track button {
+      flex-basis: 100%;
       height: 100%;
+      scroll-snap-align: center;
       cursor: zoom-out;
     }
 
@@ -445,6 +450,7 @@
       height: 100%;
       aspect-ratio: auto;
       object-fit: contain;
+      border-radius: 0;
     }
 
     .lightbox-close {
@@ -993,25 +999,30 @@
 
     /*
      * Apartment gallery.
-     * To add photos: drop 1.webp, 2.webp, ... into img/apartments/<folder>/ and update `photos`.
+     * Photos live in img/apartments/<folder>/ named <folder>-<order>-<room>.webp,
+     * e.g. 14-04-badkamer.webp. To add one: drop the file in and add its name to `photos`.
      * To add an apartment: add an entry below with its own folder.
      */
     (function () {
       const apartments = [
         {
-          label: '14', folder: '14', photos: 3,
+          label: '14', folder: '14',
+          photos: ['14-01-woonkamer', '14-02-werkplek', '14-03-keuken'],
           caption: { nl: 'Appartement 14 · 12e verdieping', en: 'Apartment 14 · 12th floor', fr: 'Appartement 14 · 12e étage', ar: 'شقة 14 · الطابق 12' }
         },
         {
-          label: '15', folder: '15', photos: 6,
+          label: '15', folder: '15',
+          photos: ['15-01-woonkamer', '15-02-slaapkamer', '15-03-eethoek', '15-04-badkamer', '15-05-keuken', '15-06-keuken-2'],
           caption: { nl: 'Appartement 15 · 12e verdieping', en: 'Apartment 15 · 12th floor', fr: 'Appartement 15 · 12e étage', ar: 'شقة 15 · الطابق 12' }
         },
         {
-          label: '17', folder: '17', photos: 6,
+          label: '17', folder: '17',
+          photos: ['17-01-woonkamer', '17-02-eethoek', '17-03-slaapkamer', '17-04-keuken', '17-05-badkamer', '17-06-woonkamer-avond'],
           caption: { nl: 'Appartement 17 · 12e verdieping', en: 'Apartment 17 · 12th floor', fr: 'Appartement 17 · 12e étage', ar: 'شقة 17 · الطابق 12' }
         },
         {
-          label: '19D', folder: '19', photos: 4,
+          label: '19D', folder: '19',
+          photos: ['19-01-woonkamer', '19-02-eethoek', '19-03-slaapkamer', '19-04-slaapkamer-2'],
           caption: { nl: 'Appartement 19D · View Tower · 2 slaapkamers', en: 'Apartment 19D · View Tower · 2 bedrooms', fr: 'Appartement 19D · View Tower · 2 chambres', ar: 'شقة 19D · فيو تاور · غرفتا نوم' }
         }
       ];
@@ -1021,12 +1032,20 @@
       const lightbox = document.getElementById('lightbox');
       const lightboxTrack = lightbox.querySelector('.apt-track');
 
-      function src(apt, n) {
-        return 'img/apartments/' + apt.folder + '/' + n + '.webp';
+      function src(apt, name) {
+        return 'img/apartments/' + apt.folder + '/' + name + '.webp';
+      }
+
+      // "15-04-badkamer" -> "Apartment 15 · 12th floor – badkamer"
+      function alt(apt, name) {
+        return apt.caption.en + ' – ' + name.split('-').slice(2).join(' ');
       }
 
       function slideIndex(track) {
-        return Math.round(track.scrollLeft / track.clientWidth);
+        const slide = track.firstElementChild;
+        const step = slide.offsetWidth + parseFloat(getComputedStyle(track).columnGap || 0);
+        if (track.scrollLeft >= track.scrollWidth - track.clientWidth - 1) return track.children.length - 1;
+        return Math.round(track.scrollLeft / step);
       }
 
       apartments.forEach(function (apt, i) {
@@ -1044,18 +1063,18 @@
         const track = document.createElement('div');
         track.className = 'apt-track';
         track.dir = 'ltr';
-        for (let n = 1; n <= apt.photos; n++) {
+        apt.photos.forEach(function (name, n) {
           const btn = document.createElement('button');
           btn.type = 'button';
           const img = document.createElement('img');
-          img.src = src(apt, n);
-          img.alt = apt.caption.en + ' – photo ' + n;
-          img.loading = (i === 0 && n === 1) ? 'eager' : 'lazy';
+          img.src = src(apt, name);
+          img.alt = alt(apt, name);
+          img.loading = (i === 0 && n === 0) ? 'eager' : 'lazy';
           img.decoding = 'async';
           btn.appendChild(img);
           btn.addEventListener('click', function () { openLightbox(apt, n); });
           track.appendChild(btn);
-        }
+        });
 
         const meta = document.createElement('div');
         meta.className = 'apt-meta';
@@ -1069,11 +1088,11 @@
         const count = document.createElement('span');
         count.className = 'apt-count';
         count.dir = 'ltr';
-        count.textContent = '1 / ' + apt.photos;
+        count.textContent = '1 / ' + apt.photos.length;
         meta.append(caption, count);
 
         track.addEventListener('scroll', function () {
-          count.textContent = (slideIndex(track) + 1) + ' / ' + apt.photos;
+          count.textContent = (slideIndex(track) + 1) + ' / ' + apt.photos.length;
         }, { passive: true });
 
         panel.append(track, meta);
@@ -1094,18 +1113,18 @@
 
       function openLightbox(apt, n) {
         lightboxTrack.replaceChildren();
-        for (let k = 1; k <= apt.photos; k++) {
+        apt.photos.forEach(function (name) {
           const btn = document.createElement('button');
           btn.type = 'button';
           const img = document.createElement('img');
-          img.src = src(apt, k);
-          img.alt = apt.caption.en + ' – photo ' + k;
+          img.src = src(apt, name);
+          img.alt = alt(apt, name);
           btn.appendChild(img);
           btn.addEventListener('click', function () { lightbox.close(); });
           lightboxTrack.appendChild(btn);
-        }
+        });
         lightbox.showModal();
-        lightboxTrack.scrollLeft = (n - 1) * lightboxTrack.clientWidth;
+        lightboxTrack.scrollLeft = n * lightboxTrack.clientWidth;
       }
 
       lightbox.querySelector('.lightbox-close').addEventListener('click', function () { lightbox.close(); });
