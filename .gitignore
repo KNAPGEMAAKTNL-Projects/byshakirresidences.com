@@ -10,3 +10,6 @@ build/
 .vscode/
 .idea/
 .claude/settings.local.json
+
+# Original photo uploads (optimised copies live in img/)
+pics/
